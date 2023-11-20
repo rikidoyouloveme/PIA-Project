@@ -1,0 +1,119 @@
+<mat-drawer-container class="drawerContainer">
+    <mat-drawer class="drawer" mode="side" position="end" opened >
+        <div class="home"><a routerLink="/moderator"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/moderatorprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + moderator.slika" alt="Profile image"></a></div>
+        <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+        <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+        <div class="button" *ngIf="!moderator.blokiran"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+        <div class="button" *ngIf="!moderator.blokiran"><a routerLink="/bookRequests"><button mat-raised-button class="largeButton" color="warn">Requests</button></a></div>
+        <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+        <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+    </mat-drawer>
+    <mat-drawer-content >
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="tableCenterContainer">
+            <div class="leftContainer">
+                <ngx-charts-bar-vertical 
+                    [view]="[300,300]"
+                    [results]="leftChartData"
+                    [xAxisLabel]="'Month'"
+                    [legendTitle]="'Number of books read in the last 12 months'"
+                    [yAxisLabel]="'Number of books read'"
+                    [legend]="false"
+                    [showXAxisLabel]="true"
+                    [showYAxisLabel]="true"
+                    [xAxis]="true"
+                    [yAxis]="true"
+                    [gradient]="false">
+                </ngx-charts-bar-vertical>
+            </div>
+            <div class="tableCenter">
+                <table >
+                    <mat-card class="card">
+                    <tr>
+                        <td>Username:</td>
+                        <td *ngIf="!shouldUpdate">
+                            {{moderator.korisnicko_ime}}
+                        </td>
+                        <td *ngIf="shouldUpdate">
+                            <input type="text" name="username" [(ngModel)]="username" [placeholder]="moderator.korisnicko_ime">
+                        </td>
+                        <td>Update user<input type="checkbox" [(ngModel)]="shouldUpdate"></td>
+                    </tr>
+                    <tr>
+                        <td>Name and surname:</td>
+                        <td *ngIf="!shouldUpdate">
+                            {{moderator.imePrezime}}
+                        </td>
+                        <td *ngIf="shouldUpdate">
+                            <input type="text" name="name" [(ngModel)]="name" [placeholder]="moderator.imePrezime">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Adress:</td>
+                        <td *ngIf="!shouldUpdate">
+                            {{moderator.adresa}}
+                        </td>
+                        <td *ngIf="shouldUpdate">
+                            <input type="text" name="adress" [(ngModel)]="adress" [placeholder]="moderator.adresa">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone number:</td>
+                        <td *ngIf="!shouldUpdate">
+                            {{moderator.telefon}}
+                        </td>
+                        <td *ngIf="shouldUpdate">
+                            <input type="text" name="phonenumber" [(ngModel)]="phonenumber" [placeholder]="moderator.telefon">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail adress:</td>
+                        <td *ngIf="!shouldUpdate">
+                            {{moderator.mejl}}
+                        </td>
+                        <td *ngIf="shouldUpdate">
+                            <input type="text" name="mail" [(ngModel)]="mail" [placeholder]="moderator.mejl">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Photo:</td>
+                        <td>
+                            <img class="bookImage" [src]="'data:image/jpeg;base64,' + picture" alt="Profile image">
+                        </td>
+                        <td *ngIf="shouldUpdate">
+                            <input type="file" name="picture" class="hidden" (change)="changePicture($event)" accept="image/jpg, image/png" [(ngModel)]="picture">
+                        </td>
+                    </tr>
+                    </mat-card>
+                    <br/>
+                    <mat-card class="cardWide" *ngIf="shouldUpdate" >
+                        <tr>
+                            <td>
+                                <button mat-raised-button color="accent" (click)="update()">Update</button> 
+                            </td>
+                        </tr>
+                    </mat-card>
+                    <tr>
+                        <td>
+                            <span style="color:red">{{message}}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="rightContainer">
+                <ngx-charts-pie-chart 
+                    [results]="rightChartData"
+                    [legend]="false"
+                    [legendTitle]="'Number of books read by genre'" 
+                    [view]="[300,300]"
+                    [labels]="true" >
+                </ngx-charts-pie-chart>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

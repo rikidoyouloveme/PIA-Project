@@ -1,0 +1,32 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="tableCenterContainer">
+    <div class="tableCenter">
+        <table>
+        <mat-card class="card">
+            <tr>
+                <td>Username:</td>
+                <td>
+                    <input type="text" name="username" [(ngModel)]="username">
+                </td>
+            </tr>
+            <tr>
+                <td>Password:</td>
+                <td>
+                    <input type="password" name="password" [(ngModel)]="password"> 
+                </td>
+            </tr>
+        </mat-card>
+        <br/>
+        <mat-card class="card">
+            <div class="center"><button mat-raised-button color="accent" (click)="login()">Sign In</button></div> 
+            <div class="center" style="color:red">{{message}}</div>
+        </mat-card>
+        </table>
+    </div>
+</div>

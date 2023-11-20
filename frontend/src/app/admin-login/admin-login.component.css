@@ -1,0 +1,16 @@
+.tableCenter {
+    width: fit-content;
+}
+.tableCenterContainer {
+    display: flex;
+    justify-content: center;
+}
+.center {
+    text-align: center; 
+}
+.card {
+    width: 330px;
+    background-color: #fff0a2;
+    background-image: url("../../assets/card.png");
+    background-blend-mode:hue;
+}

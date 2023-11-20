@@ -1,0 +1,63 @@
+.tableCenter {
+    width: fit-content;
+}
+.tableCenterContainer {
+    display: flex;
+    justify-content: center;
+}
+.center {
+    text-align: center; 
+}
+.drawerContainer {
+    background-color:#f6e27d;
+    display: contents;
+}
+.drawer {
+    background-color:#f8a9e0;
+    width: 7vw;
+    border-width: 0px;
+    background-image: url("../../assets/background.png");
+    background-position-x: right;
+}
+.home {
+    text-align: center;
+    vertical-align : top;
+    margin-top: 20%; 
+}
+.button {
+    text-align: center;
+    vertical-align : top;
+    margin-top: 10%;
+}
+.largeButton {
+    width: 90%;
+    padding: 2%;
+}
+.profileImage {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.card {
+    width:fit-content;
+    background-color: #fff0a2;
+    background-image: url("../../assets/card.png");
+    background-blend-mode:hue;
+}
+.cardWide {
+    text-align:-webkit-center;
+    background-color: #fff0a2;
+    background-image: url("../../assets/card.png");
+    background-blend-mode:hue;
+}
+.bookImage {
+    max-width: 300px;
+    max-height: 480px;
+}
+.squareImage {
+    width: 100px;
+    height: 100px;
+}
+.hidden {
+    color: transparent;
+}

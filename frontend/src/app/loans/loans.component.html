@@ -1,0 +1,108 @@
+<mat-drawer-container class="drawerContainer">
+    <mat-drawer class="drawer" mode="side" position="end" opened >
+        <div *ngIf="user.tip=='prazan'">
+            <div class="home"><a routerLink="/"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/login"><button mat-raised-button class="largeButton" color="warn">Sign in</button></a></div>
+            <div class="button"><a routerLink="/register"><button mat-raised-button class="largeButton" color="warn">Register</button></a></div>
+            <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+        </div>
+        <div *ngIf="user.tip=='moderator'">
+            <div class="home"><a routerLink="/moderator"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/moderatorprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + user.slika" alt="Profile image"></a></div>
+            <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+            <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+            <div class="button" *ngIf="!user.blokiran"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+            <div class="button" *ngIf="!user.blokiran"><a routerLink="/bookRequests"><button mat-raised-button class="largeButton" color="warn">Requests</button></a></div>
+            <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+            <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+        </div>
+        <div *ngIf="user.tip=='citalac'">
+            <div class="home"><a routerLink="/reader"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/readerprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + user.slika" alt="Profile image"></a></div>
+        <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+        <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+        <div class="button" *ngIf="!user.blokiran"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+        <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+        <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+        </div>
+        <div *ngIf="user.tip=='admin'">
+            <div class="home"><a routerLink="/admin"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/adminprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + user.slika" alt="Profile image"></a></div>
+            <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+            <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+            <div class="button"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+            <div class="button"><a routerLink="/userRequests"><button mat-raised-button class="largeButton" color="warn">Requests</button></a></div>
+            <div class="button"><a routerLink="/editUser"><button mat-raised-button class="largeButton" color="warn">Edit users</button></a></div>
+            <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+            <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content >
+        <div class="outer">
+            <div class="inner" *ngIf="loans!=null">
+                <br>
+                <br>
+                <div class="tableCenterContainer" *ngIf="loans.length==0">
+                    <div class="tableCenter2">
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <mat-card class="card">
+                            You haven't loaned anything yet :)
+                        </mat-card>
+                    </div>
+                </div>
+                <div class="tableCenterContainer">
+                    <div class="tableCenter">
+                        <table *ngFor="let l of loans">
+                            <br/>
+                            <br/>
+                            <mat-card class="card2" [ngStyle]="{'background-position-x': mash(loans.indexOf(l)) + '%','background-position-y': mash(loans.indexOf(l)) + '%'}">
+                                <tr>
+                                    <td>Photo:</td>
+                                    <td>
+                                        <img class="smallImage" [src]="'data:image/jpeg;base64,' + slika(l)" alt="Image">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Name:</td>
+                                    <td>
+                                        {{naziv(l)}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Authors:</td>
+                                    <td>
+                                        <tr *ngFor="let a of autor(l)">
+                                            {{a}}
+                                        </tr>
+                                    </td>
+                                </tr>
+                                <div *ngIf="!kasni(l)" class=tableCenterContainer>There are {{rok(l)}} days left until the book needs to be returned.</div>
+                                <div *ngIf="kasni(l)" class=tableCenterContainer style="color:red">You are {{-1*rok(l)}} days late with returning the book.</div>
+                            </mat-card>
+                            <br/>
+                            <mat-card class="cardWide" [ngStyle]="{'background-position-x': mash(loans.indexOf(l)) + '%','background-position-y': mash(loans.indexOf(l)) + '%'}">
+                                <tr>
+                                    <td>
+                                        <div *ngIf="!user.blokiran" class="center"><a (click)="clicked(l)"><button mat-raised-button class="largeButton" color="accent">Details</button></a></div>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="!l.produzen&&!user.blokiran" class="center"><button mat-raised-button color="accent" class="largeButton" (click)="produzi(l)">Produzi</button></div> 
+                                    </td>
+                                    <td>
+                                        <div class="center"><button mat-raised-button color="warn" class="largeButton" (click)="razduzi(l)">Razduzi</button></div> 
+                                    </td>
+                                </tr>
+                            </mat-card>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

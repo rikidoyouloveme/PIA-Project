@@ -1,0 +1,53 @@
+<mat-drawer-container class="drawerContainer">
+    <mat-drawer class="drawer" mode="side" position="end" opened >
+        <div class="home"><a routerLink="/"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/login"><button mat-raised-button class="largeButton" color="warn">Sign in</button></a></div>
+        <div class="button"><a routerLink="/register"><button mat-raised-button class="largeButton" color="warn">Register</button></a></div>
+        <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+    </mat-drawer>
+    <mat-drawer-content >
+        <br/>
+        <div class="tableCenterContainer">
+            <div class="tableCenter2">
+            <mat-card class="card">
+                    <tr class="tableCenterContainer">
+                        <td>TOP 3 LIST</td>
+                    </tr>
+            </mat-card>
+            </div>
+        </div>
+        <div class="tableCenterContainer">
+            <div class="tableCenter">
+                <table>
+                    <br/>
+                    <mat-card class="cardBig">
+                        <br/>
+                        <tr class="tableCenterContainer">
+                            <td>
+                                <img class="botdImage" [src]="'data:image/jpeg;base64,' + books[sliderValue].slika" alt="Image">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name:</td>
+                            <td>
+                                {{books[sliderValue].naziv}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Authors:</td>
+                            <span *ngFor="let a of books[sliderValue].autor">
+                                    {{a}} &nbsp;
+                            </span>
+                        </tr>
+                    </mat-card>
+                    <br/>
+                    <mat-card class="card3">
+                        <div class="tableCenterContainer">
+                            <mat-slider step="1" min="0" max="2" [(ngModel)]="sliderValue"></mat-slider>
+                        </div>
+                    </mat-card>
+                </table>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

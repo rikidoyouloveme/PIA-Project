@@ -1,0 +1,113 @@
+<mat-drawer-container class="drawerContainer">
+    <mat-drawer class="drawer" mode="side" position="end" opened >
+        <div *ngIf="user.tip=='prazan'">
+            <div class="home"><a routerLink="/"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/login"><button mat-raised-button class="largeButton" color="warn">Sign in</button></a></div>
+            <div class="button"><a routerLink="/register"><button mat-raised-button class="largeButton" color="warn">Register</button></a></div>
+            <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+        </div>
+        <div *ngIf="user.tip=='moderator'">
+            <div class="home"><a routerLink="/moderator"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/moderatorprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + user.slika" alt="Profile image"></a></div>
+            <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+            <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+            <div class="button" *ngIf="!user.blokiran"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+            <div class="button" *ngIf="!user.blokiran"><a routerLink="/bookRequests"><button mat-raised-button class="largeButton" color="warn">Requests</button></a></div>
+            <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+            <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+        </div>
+        <div *ngIf="user.tip=='citalac'">
+            <div class="home"><a routerLink="/reader"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/readerprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + user.slika" alt="Profile image"></a></div>
+        <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+        <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+        <div class="button" *ngIf="!user.blokiran"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+        <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+        <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+        </div>
+        <div *ngIf="user.tip=='admin'">
+            <div class="home"><a routerLink="/admin"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/adminprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + user.slika" alt="Profile image"></a></div>
+            <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+            <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+            <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+            <div class="button"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+            <div class="button"><a routerLink="/userRequests"><button mat-raised-button class="largeButton" color="warn">Requests</button></a></div>
+            <div class="button"><a routerLink="/editUser"><button mat-raised-button class="largeButton" color="warn">Edit users</button></a></div>
+            <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+            <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content >
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="tableCenterContainer">
+            <div class="tableCenter">
+                <table>
+                    <mat-card class="card">
+                    <tr>
+                        <td>Name:</td>
+                        <td>
+                            <input type="text" name="name" [(ngModel)]="name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Author:</td>
+                        <td>
+                            <input type="author" name="author" [(ngModel)]="author"> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Genre:</td>
+                        <td>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select</mat-label>
+                                <mat-select [formControl]="genreFormControl" multiple [(ngModel)]="genres">
+                                    <mat-option *ngFor="let g of genreList" [value]="g">{{g}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Publisher:</td>
+                        <td>
+                            <input type="string" name="publisher" [(ngModel)]="publisher">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Year:</td>
+                        <td>
+                            <input type="number" name="year" [(ngModel)]="year">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Language:</td>
+                        <td>
+                            <input type="text" name="language" [(ngModel)]="language">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Photo:</td>
+                        <td>
+                            <input type="file" name="picture" (change)="changePicture($event)" accept="image/jpg, image/png" [(ngModel)]="picture"  class="hidden">
+                            <span *ngIf="picture==null || picture==''">Select file</span>
+                            <img *ngIf="picture!=null && picture!=''" class="squareImage" [src]="'data:image/jpeg;base64,' + picture">
+                        </td>
+                    </tr>
+                    </mat-card>
+                    <br/>
+                    <mat-card class="card">
+                        <div class="center">
+                            <button mat-raised-button color="accent" (click)="add()">Add book</button>
+                        </div>
+                        <div class="center" style="color:red">{{message}}</div>
+                    </mat-card>
+                </table>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

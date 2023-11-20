@@ -1,0 +1,89 @@
+<mat-drawer-container class="drawerContainer">
+    <mat-drawer class="drawer" mode="side" position="end" opened >
+        <div class="home"><a routerLink="/moderator"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/moderatorprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + moderator.slika" alt="Profile image"></a></div>
+        <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+        <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+        <div class="button" *ngIf="!moderator.blokiran"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+        <div class="button" *ngIf="!moderator.blokiran"><a routerLink="/bookRequests"><button mat-raised-button class="largeButton" color="warn">Requests</button></a></div>
+        <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+        <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+    </mat-drawer>
+    <mat-drawer-content >
+        <div class="outer">
+            <div class="inner">
+                <br/>
+                <div class="tableCenterContainer">
+                    <div class="tableCenter2">
+                    <mat-card class="card">
+                            <tr>
+                                <td>BOOK OF THE DAY</td>
+                            </tr>
+                    </mat-card>
+                    </div>
+                </div>
+                <div class="tableCenterContainer" *ngIf="book!=null">
+                    <div class="tableCenter">
+                        <table>
+                        <br/>
+                        <mat-card class="card">
+                            <tr class="tableCenterContainer">
+                                <td>
+                                    <img class="botdImage" [src]="'data:image/jpeg;base64,' + book.slika" max-height="100px" alt="Image">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Name:</td>
+                                <td>
+                                    {{book.naziv}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Authors:</td>
+                                <td>
+                                    <tr *ngFor="let a of book.autor">
+                                        {{a}}
+                                    </tr>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Rating:</td>
+                                <td *ngIf="prosecna_ocena!=0">
+                                    {{prosecna_ocena}} 🤩
+                                </td>
+                                <td *ngIf="prosecna_ocena==0">
+                                    No 🤩 for now
+                                </td>
+                            </tr>
+                        </mat-card>
+                        </table>
+                    </div>
+                </div>
+                <br/>
+                <div class="tableCenterContainer">
+                    <div class="tableCenter2">
+                    <mat-card class="cardFull" *ngIf="notifications.length > 0">
+                    </mat-card>
+                    </div>
+                </div>
+                <div class="tableCenterContainer">
+                    <div class="tableCenter">
+                        <table>
+                            <div *ngFor="let o of notifications">
+                                <br/>
+                                <mat-card class="card2" [ngStyle]="{'background-position-x': mash(notifications.indexOf(o)) + '%','background-position-y': mash(notifications.indexOf(o)) + '%'}">
+                                    <tr>
+                                        <td>
+                                            {{o}}
+                                        </td>
+                                    </tr>
+                                </mat-card>
+                            </div>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

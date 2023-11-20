@@ -1,0 +1,118 @@
+<mat-drawer-container class="drawerContainer">
+    <mat-drawer class="drawer" mode="side" position="end" opened >
+        <div class="home"><a routerLink="/admin"><button mat-mini-fab color="warn"><mat-icon>home</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/adminprofile"><img class="profileImage" [src]="'data:image/jpeg;base64,' + admin.slika" alt="Profile image"></a></div>
+        <div class="button"><a routerLink="/search"><button mat-raised-button class="largeButton" color="accent"><mat-icon>search</mat-icon></button></a></div>
+        <div class="button"><a routerLink="/loan"><button mat-raised-button class="largeButton" color="warn">Loan</button></a></div>
+        <div class="button"><a routerLink="/loanhistory"><button mat-raised-button class="largeButton" color="warn">History</button></a></div>
+        <div class="button"><a routerLink="/addbook"><button mat-raised-button class="largeButton" color="warn">Add book</button></a></div>
+        <div class="button"><a routerLink="/userRequests"><button mat-raised-button class="largeButton" color="warn">Requests</button></a></div>
+        <div class="button"><a routerLink="/editUser"><button mat-raised-button class="largeButton" color="warn">Edit users</button></a></div>
+        <div class="button"><a routerLink="/changePassword"><button mat-raised-button class="largeButton" color="warn">Change password</button></a></div>
+        <div class="button"><button mat-raised-button color="warn" class="largeButton" (click)="logout()">Sign Out</button></div>
+    </mat-drawer>
+    <mat-drawer-content >
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="tableCenterContainer">
+            <div class="tableCenter">
+                <table>
+                    <mat-card class="card">
+                        <tr *ngIf="shouldUpdate">
+                            <td>User to update:</td>
+                            <td>
+                                <input type="text" name="oldUsername" [(ngModel)]="oldUsername">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Username:</td>
+                            <td>
+                                <input type="text" name="username" [(ngModel)]="username">
+                            </td>
+                            <td>Update user<input type="checkbox" [(ngModel)]="shouldUpdate"></td>
+                        </tr>
+                        <tr>
+                            <td>Password:</td>
+                            <td>
+                                <input type="password" name="password" [(ngModel)]="password"> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Confirm password:</td>
+                            <td>
+                                <input type="password" name="passwordConfirm" [(ngModel)]="passwordConfirm"> 
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Name and surname:</td>
+                            <td>
+                                <input type="text" name="name" [(ngModel)]="name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Tip:</td>
+                            <td>
+                                <mat-radio-group aria-label="Choose type" [(ngModel)]="type" >
+                                    <mat-radio-button value="citalac">Reader &nbsp;</mat-radio-button>
+                                    <mat-radio-button value="moderator">Moderator &nbsp;</mat-radio-button>
+                                  </mat-radio-group>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Adress:</td>
+                            <td>
+                                <input type="text" name="adress" [(ngModel)]="adress">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Phone number:</td>
+                            <td>
+                                <input type="text" name="phonenumber" [(ngModel)]="phonenumber">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>E-mail adress:</td>
+                            <td>
+                                <input type="text" name="mail" [(ngModel)]="mail">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Photo:</td>
+                            <td>
+                                <input type="file" name="picture" (change)="changePicture($event)" accept="image/jpg, image/png" [(ngModel)]="picture"  class="hidden">
+                                <span *ngIf="picture==null || picture==''">Select file</span>
+                                <img *ngIf="picture!=null && picture!=''" class="squareImage" [src]="'data:image/jpeg;base64,' + picture">
+                            </td>
+                        </tr>
+                    </mat-card>
+                    <br/>
+                    <mat-card class="cardWide">
+                            <tr>
+                                <td>
+                                    <button mat-raised-button color="accent" *ngIf="shouldUpdate" (click)="update()">Update</button> 
+                                </td>
+                                <td>
+                                    <button mat-raised-button color="accent" *ngIf="!shouldUpdate" (click)="add()">Add</button> 
+                                </td>
+                                <td>
+                                    <button mat-raised-button color="warn" *ngIf="shouldUpdate" (click)="changeBlock()">Change block</button>
+                                </td>
+                                <td>
+                                    <button mat-raised-button color="warn" *ngIf="shouldUpdate" (click)="delete()">Delete</button>
+                                </td>
+                            </tr>
+                    </mat-card>
+                    <tr class="center">
+                        <td>
+                            <div style="color:red">{{message}}</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "632ad527e44536acc28b11ba"
+  },
+  "korisnicko_ime": "ana",
+  "komentar": "Bas je dobra knjiga! Svaka cast!",
+  "datum": {
+    "$date": {
+      "$numberLong": "1663751488199"
+    }
+  },
+  "id": 1,
+  "ocena": 8,
+  "azuriran": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad552e44536acc28b11d0"
+  },
+  "korisnicko_ime": "ana",
+  "komentar": "Eh... bzvz....",
+  "datum": {
+    "$date": {
+      "$numberLong": "1663751506373"
+    }
+  },
+  "id": 3,
+  "ocena": 2,
+  "azuriran": false,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632addf04c4608ea90c72577"
+  },
+  "korisnicko_ime": "marko",
+  "komentar": "jadno",
+  "datum": {
+    "$date": {
+      "$numberLong": "1663753712600"
+    }
+  },
+  "id": 1,
+  "ocena": 4,
+  "azuriran": false,
+  "__v": 0
+}]

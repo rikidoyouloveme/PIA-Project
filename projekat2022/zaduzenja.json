@@ -1,0 +1,236 @@
+[{
+  "_id": {
+    "$oid": "632ad4a6e44536acc28b114b"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 1,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1653124134879"
+    }
+  },
+  "datum_razduzenja": {
+    "$date": {
+      "$numberLong": "1653124225583"
+    }
+  },
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad4b6e44536acc28b1162"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 2,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1653124150383"
+    }
+  },
+  "datum_razduzenja": {
+    "$date": {
+      "$numberLong": "1653124223917"
+    }
+  },
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad4c2e44536acc28b1179"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 3,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1640077762679"
+    }
+  },
+  "datum_razduzenja": {
+    "$date": {
+      "$numberLong": "1640077827447"
+    }
+  },
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad564e44536acc28b11df"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 3,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663751524204"
+    }
+  },
+  "datum_razduzenja": null,
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad56be44536acc28b11ef"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 5,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663751531502"
+    }
+  },
+  "datum_razduzenja": {
+    "$date": {
+      "$numberLong": "1663753372354"
+    }
+  },
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad57ae44536acc28b1206"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 1,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663751546646"
+    }
+  },
+  "datum_razduzenja": null,
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad594e44536acc28b121f"
+  },
+  "korisnicko_ime": "marko",
+  "knjiga_id": 1,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663751572550"
+    }
+  },
+  "datum_razduzenja": {
+    "$date": {
+      "$numberLong": "1663751579822"
+    }
+  },
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad869ec80d5ddaae35ea3"
+  },
+  "korisnicko_ime": "marko",
+  "knjiga_id": 1,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663752297884"
+    }
+  },
+  "datum_razduzenja": {
+    "$date": {
+      "$numberLong": "1663752317389"
+    }
+  },
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ad895ec80d5ddaae35edf"
+  },
+  "korisnicko_ime": "marko",
+  "knjiga_id": 5,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663753372427"
+    }
+  },
+  "datum_razduzenja": {
+    "$date": {
+      "$numberLong": "1663753754122"
+    }
+  },
+  "produzen": false,
+  "datum_rezervacije": {
+    "$date": {
+      "$numberLong": "1663752341413"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ae9534c4608ea90c728d8"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 5,
+  "datum_zaduzenja": null,
+  "datum_razduzenja": null,
+  "produzen": false,
+  "datum_rezervacije": {
+    "$date": {
+      "$numberLong": "1663756627429"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ae9694c4608ea90c728f3"
+  },
+  "korisnicko_ime": "ana",
+  "knjiga_id": 2,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663756649549"
+    }
+  },
+  "datum_razduzenja": null,
+  "produzen": false,
+  "datum_rezervacije": null,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "632ae9794c4608ea90c7290d"
+  },
+  "korisnicko_ime": "marko",
+  "knjiga_id": 5,
+  "datum_razduzenja": null,
+  "produzen": false,
+  "datum_rezervacije": {
+    "$date": {
+      "$numberLong": "1663756665917"
+    }
+  },
+  "__v": 0,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663761410555"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "632ae9924c4608ea90c72920"
+  },
+  "korisnicko_ime": "admin",
+  "knjiga_id": 5,
+  "datum_razduzenja": null,
+  "produzen": true,
+  "datum_rezervacije": {
+    "$date": {
+      "$numberLong": "1663756690493"
+    }
+  },
+  "__v": 0,
+  "datum_zaduzenja": {
+    "$date": {
+      "$numberLong": "1663761410555"
+    }
+  }
+}]
